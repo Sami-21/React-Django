@@ -1,4 +1,4 @@
-#Front-end of an e-commerce website with React and TailwindCSS  
+# Front-end of an e-commerce website with React and TailwindCSS  
 
 this project still under developement. with future tweaks in the front-end along with a back-end with Django.
 
