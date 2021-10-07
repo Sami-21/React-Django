@@ -3,7 +3,7 @@ import { App_State } from '../State_manager'
 import CartProduct from './CartProduct'
 import {Link} from 'react-router-dom'
 import CurrencyFormat from 'react-currency-format';
-import { cartTotal , categoriesNumber } from '../reducer';
+import { cartTotal  } from '../reducer';
 import data from '../MOCK_DATA.json'
 import Product from './Product';
 
@@ -15,10 +15,12 @@ export default function Header() {
 
     /////////////////////////////////////////////////////////////////////////////  
     const togglecart = () => {
-        document.querySelector("#cart").classList.toggle("translate-x-full")
-        document.querySelector("#cart").classList.toggle("ease-in")
-        document.querySelector("#cart").classList.toggle("translate-x-0")
-        document.querySelector("#cart").classList.toggle("ease-out")
+        const classes =["translate-x-full","ease-in","translate-x-0","ease-out"]
+        classes.map(el =>  document.querySelector("#cart").classList.toggle(el))
+        // document.querySelector("#cart").classList.toggle("translate-x-full")
+        // document.querySelector("#cart").classList.toggle("ease-in")
+        // document.querySelector("#cart").classList.toggle("translate-x-0")
+        // document.querySelector("#cart").classList.toggle("ease-out")
     }
     /////////////////////////////////////////////////////////////////////////////
     const togglemenu = () => {
@@ -32,8 +34,7 @@ export default function Header() {
 
     /////////////////////////////////////////////////////////////////////////////
 
-    useEffect(() => {
-       
+    useEffect(() => {   
         if(search===""){
             setfilteredData([])
             document.querySelector("#search_output").style.display = "none"
@@ -90,7 +91,7 @@ export default function Header() {
             <nav className="sm:flex sm:justify-center sm:items-center mt-4 hidden">
                 <div className="flex flex-col sm:flex-row">
                     <Link to="/" className="mt-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0 " href="#">Home</Link>
-                  <a className="flex items-center mt-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0" onClick={togglecategories} href="#">Categories <svg id="category-icon" className="ml-2 relative transition transform" version="1.1"   x="0px" y="0px"
+                  <span className="flex items-center mt-3 text-gray-500 cursor-pointer hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0" onClick={togglecategories} href="#">Categories <svg id="category-icon" className="ml-2 relative transition transform" version="1.1"   x="0px" y="0px"
 	 width="8px" height="8px" viewBox="0 0 451.847 451.847"
 	 >
 <g>
@@ -128,10 +129,10 @@ export default function Header() {
 </g>
 <g>
 </g>
-</svg></a>
+</svg></span>
 
-                    <a className="mt-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0" href="#">Contact</a>
-                    <a className="mt-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0" href="#">About</a>
+                    <Link to="/contact" className="mt-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0" href="#">Contact</Link>
+                    <Link to='/about' className="mt-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0" href="#">About</Link>
                 </div>
                
             </nav>
@@ -141,14 +142,14 @@ export default function Header() {
     <li className="mt-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0">category3</li>
     <li className="mt-3 mb-3 text-gray-500  hover:text-gray-900 hover:transition duration-300 sm:mx-3 sm:mt-0">category3</li>
 </ul>
-            <div className="relative mt-6 max-wLg mx-auto">
+            <div id="search_container" className="relative mt-6 max-w-3xl mx-auto">
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
                 <svg className="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
                     <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                 </svg>
             </span>
 
-                <input onChange={event => setsearch(event.target.value)} className="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500  focus:outline-none focus:shadow-outline" type="text" placeholder="Search" />
+                <input  onChange={event => setsearch(event.target.value)} className="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500  focus:outline-none focus:shadow-outline" type="text" placeholder="Search" />
             </div>
         </div>
         
@@ -164,7 +165,7 @@ export default function Header() {
         <hr className="my-3"/>
         {cart.length===0  ?(<h2 className="text-gray-800 ">your shopping cart is empty</h2>)  
         :(cart.map((item,index) => 
-            <CartProduct key={index} ID={item.ID} name={item.name} price={item.price} quantity={item.quantity}/>
+            <CartProduct key={index} ID={item.ID} name={item.name} price={item.price} image={item.image} quantity={item.quantity}/>
         )) }
       
         {cart.length===0 ? 
@@ -188,7 +189,7 @@ export default function Header() {
         <div id="not_found_msg" className="text-center mx-auto font-bold hidden"><h2>Product Not Found</h2></div>
         <div id="found_products" className="gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 hidden">
         {filteredData.map((item, index) => 
-        <Product key={index} ID={item.id} name={item.name} price={item.price} />)}
+        <Product key={index} ID={item.id} name={item.name} price={item.price} image={item.image}/>)}
     </div>
     </div>
     

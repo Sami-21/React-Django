@@ -37,8 +37,8 @@ export default function CartProduct(props) {
     return (
         <div className="flex justify-between mt-6 border-b-2 py-4 border-gray-600 border-opacity-10 bg-gray-100 p-4">
             <div className="flex">
-                <img className="h-20 w-20 object-cover rounded" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1189&amp;q=80" alt=""/>
-                <div className="mx-3">
+                <img className="h-20 w-20 object-cover rounded" src={props.image} />
+                 <div className="mx-3">
                     <h3 className="text-sm text-gray-600">{props.name}</h3>
                     <div className="flex items-center mt-2">
                         <button onClick={increment} className="text-gray-500 focus:outline-none focus:text-gray-600">

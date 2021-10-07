@@ -5,6 +5,9 @@ import Category from './Components/Category';
 import Footer from './Components/Footer';
 import Home from './Components/Home';
 import Checkout from './Components/Checkout';
+import About from './Components/About';
+import Contact from './Components/Contact';
+import StoreContact from './Components/StoreContact';
 
 
 function App() {
@@ -37,6 +40,16 @@ function App() {
         <Checkout/>
         <Footer/>
       </Route>
+      <Route path='/about'>
+        <Header/>
+        <About/>
+        <Footer/>
+      </Route>     
+      <Route path='/contact'>
+        <Header/>
+        <StoreContact/>
+        <Footer/>
+      </Route>     
       <Route path='/'>
         <Header/>
         <Home/>

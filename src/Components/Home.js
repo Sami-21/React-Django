@@ -1,6 +1,7 @@
 import React from 'react'
 import Product from './Product'
 import {Link} from 'react-router-dom'
+import data  from '../MOCK_DATA.json'
 
 
 export default function Home() {
@@ -46,27 +47,19 @@ export default function Home() {
                 </div>
             </div>
             <div className="mt-16">
-                <h3 className="text-gray-600 text-2xl font-medium">Fashions</h3>
+                <h3 className="text-gray-600 text-2xl font-medium">Featured</h3>
                 <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-                <Product ID='254453' name="classic watch" price={120} />
-
-                <Product ID='254453' name="classic watch" price={120} />
-
-                <Product ID='254453' name="classic watch" price={120} />
-
-                <Product ID='254453' name="classic watch" price={120} />
-
+                    {data.filter(item => item.featured === true).slice(0,4).map(element => 
+                <Product key={element.id} ID={element.id} name={element.name} price={element.price} image={element.image} />
+                )}
                 </div>
             </div>
             <div className="mt-16">
                 <h3 className="text-gray-600 text-2xl font-medium">Fashions</h3>
                 <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-                <Product ID='254453' name="classic watch" price={120} />
-
-                <Product ID='254453' name="classic watch" price={120} />
-                <Product ID='254453' name="classic watch" price={120} />
-
-                <Product ID='254453' name="classic watch" price={120} />
+                {data.filter(item => item.featured === true).slice(4).map(element => 
+                <Product key={element.id} ID={element.id} name={element.name} price={element.price} image={element.image} />
+                )}
 
                 </div>
             </div>
