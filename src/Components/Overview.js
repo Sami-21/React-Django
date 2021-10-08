@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { App_State } from '../State_manager';
@@ -14,6 +15,24 @@ export default function Overview() {
     }
 /////////////////////////////////////////////////////////////////////////////
 const submissionHandler = () => {
+    console.log(client)
+    axios({
+        method:"post",
+        url:"/checkout",
+        data:{
+            FullName:client.FullName,
+            Email:client.Email ,
+            PhoneNumber: client.PhoneNumber,
+            address:{
+            City:client.City, 
+            DeliveryAddress: client.DeliveryAddress,
+            State: client.State,
+            }
+        }
+    })
+    .then(response => console.log(response))
+    .catch(err => console.log(err.message))
+    
         document.querySelector("#Order_submission").classList.remove("hidden")
         document.querySelector("#checkout_screen").classList.add("hidden")     
 }

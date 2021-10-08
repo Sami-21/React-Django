@@ -46,7 +46,7 @@ export default function Checkout() {
                                 <h3 className="text-gray-700 font-medium">Order total items {cart.reduce((amount,item) => item.quantity + amount , 0)}</h3>
                             </div>
                         {cart.map((item,index) => 
-            <CartProduct key={index} ID={item.ID} name={item.name} price={item.price} quantity={item.quantity}/>)}
+            <CartProduct key={index} ID={item.ID} name={item.name} price={item.price} image={item.image} quantity={item.quantity}/>)}
         <div className="flex items-center justify-between flex-row-reverse my-4">
         <CurrencyFormat  thousandSeparator={true} value={cartTotal(cart)} prefix={"$"} displayType={"text"} />
         <h2>Your total</h2>
