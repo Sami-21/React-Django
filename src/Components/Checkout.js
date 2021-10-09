@@ -34,7 +34,7 @@ export default function Checkout() {
                    <div id="checkout_screen" className="z-0 container mx-auto px-6">
             <h3 className="text-gray-700 text-2xl font-medium">Checkout</h3>
             <div className="flex flex-col lg:flex-row mt-8">
-                <div className="w-full lg:w-1/2 order-2 shadow border rounded-md p-4 bg-gray-200">                 
+                <div className="w-full h-auto lg:w-1/2 order-2 shadow border rounded-md p-4 bg-gray-200">                 
                    <Contact />
                    <Shipping />
                    <Overview/>
