@@ -1,3 +1,7 @@
+# Front-end of an e-commerce website with React and TailwindCSS  
+
+this project still under developement. with future tweaks in the front-end along with a back-end with Django.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
